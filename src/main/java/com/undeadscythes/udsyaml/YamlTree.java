@@ -37,6 +37,11 @@ public class YamlTree {
         return config.getConfigurationSection(path).getValues(false);
     }
 
+    public boolean isEmpty() {
+        if(!loaded) throw new YamlConfigNotLoadedException();
+        return config.getValues(false).isEmpty();
+    }
+
     public void remove(String path) {
         config.set(path, null);
     }
